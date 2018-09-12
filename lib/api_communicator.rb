@@ -9,55 +9,15 @@ API_HOST = "https://api.yelp.com"
 SEARCH_PATH = "/v3/businesses/search"
 BUSINESS_PATH = "/v3/businesses/"  # trailing / because we append the business id to the path
 
-num = 1
-SEARCH_LIMIT = num
 
-
-def search(term, location)
+def search(term, location, offset)
   url = "#{API_HOST}#{SEARCH_PATH}"
   params = {
     term: term,
     location: location,
-    limit: SEARCH_LIMIT
+    limit: 50,
+    offset: offset
   }
   response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
   response.parse
 end
-
-def run(term, location)
-  search(term, location)
-end
-
-def search_calls(search_result, number)
-  i = 0
-  list = []
-  while i < number
-    rest = search_result["businesses"][i]
-    name = search_result["businesses"][i]["name"]
-    rating = search_result["businesses"][i]["rating"]
-    zip_code = search_result["businesses"][i]["location"]["zip_code"]
-    image_url = search_result["businesses"][i]["image_url"]
-    type = search_result["businesses"][i]["categories"][0]["alias"]
-    display_address = search_result["businesses"][i]["location"]["display_address"][0]
-    # if type == "icecream"
-    # if type = search_result["businesses"][i]["categories"][0]["alias"] == "icecream"
-    #   list << "#{name}, #{rating}, #{zip_code}, #{type}"
-    # end
-    #its an array of alias. so can call with 1 or 2
-    # binding.pry
-    i += 1
-    # binding.pry
-  end
-end
-
-# t.string :name
-# t.integer :zip_code
-# t.integer :rating
-# t.string :price
-# t.string :display_address
-# t.string :type
-# t.string :url
-# t.string :image_url
-
-search_result = run('Dessert', 'New York City')
-search_calls(search_result, num)
