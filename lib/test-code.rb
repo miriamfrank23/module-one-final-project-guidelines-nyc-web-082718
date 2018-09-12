@@ -36,10 +36,9 @@ def search_calls(search_result, number)
     rating = search_result["businesses"][i]["rating"]
     zip_code = search_result["businesses"][i]["location"]["zip_code"]
     image_url = search_result["businesses"][i]["image_url"]
-    # <%= image_tag 'image_url' %>
     type = search_result["businesses"][i]["categories"][0]["alias"]
-    if type == "icecream"
-    # if type = search_result["businesses"][i]["categories"][0]["alias"] == "icecream"
+    # if type == "icecream"
+    if type = search_result["businesses"][i]["categories"][0]["alias"] == "icecream"
       list << "#{name}, #{rating}, #{zip_code}, #{type}"
     end
     display_address = search_result["businesses"][i]["location"]["display_address"][0]
