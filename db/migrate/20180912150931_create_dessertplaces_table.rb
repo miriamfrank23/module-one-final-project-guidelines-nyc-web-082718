@@ -1,4 +1,4 @@
-class CreateDessertPlacesTable < ActiveRecord::Migration[5.0]
+class CreateDessertplacesTable < ActiveRecord::Migration[5.0]
   def change
     create_table :dessertplaces do |t|
       t.string :name
@@ -10,5 +10,5 @@ class CreateDessertPlacesTable < ActiveRecord::Migration[5.0]
       t.string :url
       t.string :image_url
     end
-  end 
+  end
 end

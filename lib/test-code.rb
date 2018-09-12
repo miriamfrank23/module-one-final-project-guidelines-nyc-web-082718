@@ -38,17 +38,26 @@ def search_calls(search_result, number)
     zip_code = search_result["businesses"][i]["location"]["zip_code"]
     image_url = search_result["businesses"][i]["image_url"]
     type = search_result["businesses"][i]["categories"][0]["alias"]
+    display_address = search_result["businesses"][i]["location"]["display_address"][0]
     # if type == "icecream"
     # if type = search_result["businesses"][i]["categories"][0]["alias"] == "icecream"
     #   list << "#{name}, #{rating}, #{zip_code}, #{type}"
     # end
-    display_address = search_result["businesses"][i]["location"]["display_address"][0]
     #its an array of alias. so can call with 1 or 2
     # binding.pry
     i += 1
     # binding.pry
   end
 end
+
+# t.string :name
+# t.integer :zip_code
+# t.integer :rating
+# t.string :price
+# t.string :display_address
+# t.string :type
+# t.string :url
+# t.string :image_url
 
 search_result = run('Dessert', 'New York City')
 search_calls(search_result, num)
