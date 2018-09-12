@@ -44,7 +44,7 @@ def search_calls(search_result, number)
     # end
     display_address = search_result["businesses"][i]["location"]["display_address"][0]
     #its an array of alias. so can call with 1 or 2
-    binding.pry
+    # binding.pry
     i += 1
     # binding.pry
   end
