@@ -9,7 +9,7 @@ API_HOST = "https://api.yelp.com"
 SEARCH_PATH = "/v3/businesses/search"
 BUSINESS_PATH = "/v3/businesses/"  # trailing / because we append the business id to the path
 
-num = 1
+num = 10
 SEARCH_LIMIT = num
 
 
@@ -30,18 +30,25 @@ end
 
 def search_calls(search_result, number)
   i = 0
+  list = []
   while i < number
     name = search_result["businesses"][i]["name"]
     rating = search_result["businesses"][i]["rating"]
     zip_code = search_result["businesses"][i]["location"]["zip_code"]
     image_url = search_result["businesses"][i]["image_url"]
+    # <%= image_tag 'image_url' %>
     type = search_result["businesses"][i]["categories"][0]["alias"]
-    display_address = search_result["businesses"][i]["location"]["display_address"]
+    if type == "icecream"
+    # if type = search_result["businesses"][i]["categories"][0]["alias"] == "icecream"
+      list << "#{name}, #{rating}, #{zip_code}, #{type}"
+    end
+    display_address = search_result["businesses"][i]["location"]["display_address"][0]
     #its an array of alias. so can call with 1 or 2
     # binding.pry
     i += 1
+    binding.pry
   end
 end
 
-search_result = run('dessert', 'New York City')
+search_result = run('Ice Cream', 'New York City')
 search_calls(search_result, num)
