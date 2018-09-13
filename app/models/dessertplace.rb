@@ -43,11 +43,11 @@ class Dessertplace < ActiveRecord::Base
   end
 
   def self.gets_info_prior_rec(array_of_prior_recs)
-    puts "Your prior recommendations are listed below. We hope you loved them!"
+    puts "Your prior recommendations are listed below. We hope you loved them!".colorize(:light_magenta)
     array_of_prior_recs.each do |rec|
       dest = Dessertplace.where(id: rec.dessertplace_id)
-      puts "Name: #{dest[0].name}"
-      puts "Address: #{dest[0].display_address}"
+      puts "Name: #{dest[0].name}".colorize(:light_cyan)
+      puts "Address: #{dest[0].display_address}".colorize(:light_cyan)
       puts ""
     end
   end
