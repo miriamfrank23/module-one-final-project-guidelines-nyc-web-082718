@@ -31,9 +31,9 @@ class User < ActiveRecord::Base
 
   def self.create_user(username, zip_code)
     user = User.create(name: username, zip_code: zip_code)
-    puts "Your username is #{user.name} and your ID is #{user.id}"
-    puts "Don't lose this its super important"
     puts
+    puts "Your username is #{user.name}, and your user ID is #{user.id}"
+    puts "Please remember these so you can pick up right where you left off when you come back for more recommendations!"
     puts
     return user
   end

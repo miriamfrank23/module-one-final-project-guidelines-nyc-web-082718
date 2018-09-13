@@ -2,33 +2,41 @@ require 'pry'
 
 def greet
   puts "Hi there! If you're looking for somewhere to get dessert in NYC tonight, you came to the right place. We will find you a highly rated and conveniently located dessert place to go tonight right now!"
+  puts ""
 end
 
 
 def returning_user?
+  puts
   puts "Are you a returning user?"
   puts "Y or N"
   y_n = gets.chomp.downcase
   if y_n == 'y'
-    puts "Please enter you username"
+    puts
+    puts "Please enter your username"
     username = gets.chomp
+    puts
     puts "Please enter your user ID"
     userId = gets.chomp.to_i
-    if User.exists?(name: username)
+    if User.exists?(name: username, id: userId)
       user = User.find_by name: username, id: userId
       return user
       # u = User.find_by name: 'Tom', id: 29
     else
-      puts "Are you sure you exist?"
+      puts ""
+      puts "Are you sure you have been here before?"
+      puts
       returning_user?
     end
-  else
+  elsif y_n == 'n'
   return nil
+else returning_user?
   end
 end
 
 
 def gets_name
+  puts ""
   puts "First, please give us a username to remember you by!"
   username = gets.chomp
   # if User.exists?(name: username)
@@ -41,6 +49,7 @@ end
 
 
 def gets_zip
+  puts ""
   puts "Please give us your zip code so we can recommend a great place close by!"
   zip_code = gets.chomp
   if zip_code.length != 5
@@ -55,7 +64,8 @@ end
 
 def asks_for_dessert_type
   puts "We want to pick the perfect place for you; please answer a few questions below."
-  puts "Please pick a dessert from the list below. Number 1-9:"
+  puts ""
+  puts "Please pick a dessert from the list below by entering a number 1-9:"
   puts "[1] - Ice Cream"
   puts "[2] - Cupcakes"
   puts "[3] - Donuts"
@@ -93,6 +103,7 @@ end
 
 
 def asks_for_dessert_price
+  puts
   puts "There are desserts of all prices in the city. How much are you looking to spend on your dessert? Please indicate your price ranges with dollar signs: one dollar sign ($) is should indicate very inexpensive, and four dollar signs ($$$$) should indicate very expensive."
   dessert_price_range = gets.chomp
 end
