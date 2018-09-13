@@ -7,3 +7,6 @@ gem "pry"
 gem "require_all"
 gem 'http'
 gem 'rails-erd'
+gem 'rmagick', '~> 2.16'
+gem 'catpix'
+gem 'colorize', '~> 0.8.1'
