@@ -2,29 +2,38 @@ class Recommendation < ActiveRecord::Base
   belongs_to :users
   belongs_to :dessertplaces
 
-  # def self.add_recommendation(user_id, dessertplace_id)
-  #   binding.pry
-  #   Recommendation.create(user_id, dessertplace_id)
-  # end
-
-
-  def self.return_recommendation(user,dessert_type, pricerange)
-    d = []
-    d = Dessertplace.where(zip_code: user.zip_code, category: dessert_type, price: pricerange)
-    if d.length == 0
-      user.change_zip_code
-      return_recommendation(user,dessert_type, pricerange)
-    else
+  def self.make_recommendation(user, d)
       d = d.sample
       puts "You should go to: #{d.name}"
       puts "Located on: #{d.display_address}"
       puts ""
       Recommendation.create(user_id: user.id, dessertplace_id: d.id)
-      # Recommendation.add_recommendation(user.id, d.id)
-      # Add to rec tabe
       repeat_recommendation?(user)
     end
-  end
+
+
+    def self.return_recommendation(user,dessert_type, pricerange)
+      d = []
+      d = Dessertplace.where(zip_code: user.zip_code, category: dessert_type, price: pricerange)
+      if d.length == 0
+        puts "no places in this zip meet your criteria"
+        puts "#WOULD YOU LIKE TO CHANGE YOUR ZIP"
+        puts " or we can give you a random one in nYC Y or N"
+        y_n = gets.chomp.downcase
+        if y_n == 'y'
+          user.change_zip_code
+          return_recommendation(user,dessert_type, pricerange)
+        elsif y_n == 'n'
+          d = Dessertplace.where(category: dessert_type, price: pricerange)
+          Recommendation.make_recommendation(user, d)
+        else
+          puts "ok"
+        end #end of change zip code if
+
+      else
+        Recommendation.make_recommendation(user, d)
+      end
+    end
 
 
   def self.return_old_recommendations(user_id)

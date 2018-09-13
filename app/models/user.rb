@@ -10,8 +10,9 @@ class User < ActiveRecord::Base
       user = User.create_user(username, zip_code)
       return user
     else
-      puts "what whould you like to do?"
-      puts "Chose from Below"
+      puts
+      puts "What whould you like to do?"
+      puts "Please pick an option from the list below by entering a number 1 or 2:"
       puts "[1] - See old recommendations"
       puts "[2] - Get new recommendations"
       choice = gets.chomp
@@ -39,7 +40,8 @@ class User < ActiveRecord::Base
   end
 
   def change_zip_code
-    puts "We only want the best for you, and there are no high quality dessert places that fit your criteria in the zip code you provided. Please provide us with another nearby zipcode."
+    puts
+    puts "We only want the best for you, and there are no high quality dessert places that fit your criteria in the zip code you provided. Please provide us with another nearby zip code."
     zip = gets.chomp
     self.zip_code = zip
     self.save

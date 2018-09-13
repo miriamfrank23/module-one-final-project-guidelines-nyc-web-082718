@@ -1,7 +1,13 @@
 require 'pry'
 
+# String.colors
+# String.modes
+# String.color_samples
+# binding.pry
+
 def greet
-  puts "Hi there! If you're looking for somewhere to get dessert in NYC tonight, you came to the right place. We will find you a highly rated and conveniently located dessert place to go tonight right now!"
+  puts
+  puts "Hi there! If you're looking for somewhere to get dessert in NYC tonight, you came to the right place. We will find you a highly rated and conveniently located dessert place to go tonight right now!".colorize(:light_magenta)
   puts ""
 end
 
@@ -75,7 +81,6 @@ def asks_for_dessert_type
   puts "[7] - Bakery Desserts"
   puts "[8] - Candy"
   puts "[9] - Surprise Me!"
-  puts ""
   dessert_type = gets.chomp
   if dessert_type == '1'
     return 'icecream'
@@ -104,11 +109,12 @@ end
 
 def asks_for_dessert_price
   puts
-  puts "There are desserts of all prices in the city. How much are you looking to spend on your dessert? Please indicate your price ranges with dollar signs: one dollar sign ($) is should indicate very inexpensive, and four dollar signs ($$$$) should indicate very expensive."
+  puts "There are desserts of all prices in the city. How much are you looking to spend on your dessert? Please indicate your price ranges with dollar signs: one dollar sign ($) should indicate very inexpensive, and four dollar signs ($$$$) should indicate very expensive."
   dessert_price_range = gets.chomp
 end
 
 def goodbye(user)
+  puts
   puts "Thanks for visiting, #{user.name}! We hope you love your dessert tonight! Please come back for more recommendations soon, remember, your user ID is #{user.id}. Goodbye!"
 end
 
@@ -116,12 +122,12 @@ def repeat_recommendation?(user)
   puts "Would you like another recommendation right now?"
   puts "Y or N"
   y_n = gets.chomp.downcase
-  binding.pry
+  # binding.pry
     if y_n == 'y'
-      binding.pry
+      # binding.pry
       find_recommendation_methods(user)
     elsif y_n == 'n'
-      binding.pry
+      # binding.pry
       goodbye(user)
     else puts "Please enter Y or N"
       repeat_recommendation?(user)
