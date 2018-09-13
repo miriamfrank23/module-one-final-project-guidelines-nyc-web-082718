@@ -35,6 +35,7 @@ class Dessertplace < ActiveRecord::Base
     offset += 51
     end #end offset < 500
   end #end of add_dessertplaces
+  
 
   #clears data from the table
   def self.destroy_database()

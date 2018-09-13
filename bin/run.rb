@@ -15,23 +15,25 @@ require_relative '../lib/CLI_methods.rb'
 # bibble = Dessertplace.find_by name: 'Bibble & Sip'
 
 
+greet
+user = returning_user?
+user = User.make_user(user)
+dessert_type = asks_for_dessert_type
+pricerange = asks_for_dessert_price
+recommendation = Recommendation.return_recommendation(user, dessert_type, pricerange)
 
 
 
 
-
-def return_recommendation(dessert_type, pricerange)
-  d = Dessertplace.where(category: dessert_type, price: pricerange)
-  binding.pry
-end
-
-
+#################################################################
 #create Dessert database
 def create_database
   Dessertplace.add_dessertplaces()
 end
 
-#calling one of these will empty the respectie Database
+#calling one of these will empty the respective Database
+
+# This will destroy entire dessert database
 # def empty_dessert_db
 #   Dessertplace.destroy_database()
 # end
@@ -44,11 +46,5 @@ def empty_recommdation_db
   Recommendation.destroy_database()
 end
 
-user = create_user
-dessert_type = asks_for_dessert_type
-pricerange = asks_for_dessert_price
-return_recommendation(dessert_type, pricerange)
-
 binding.pry
-
 puts "HELLO WORLD"
