@@ -35,11 +35,21 @@ class Dessertplace < ActiveRecord::Base
     offset += 51
     end #end offset < 500
   end #end of add_dessertplaces
-  
+
 
   #clears data from the table
   def self.destroy_database()
     Dessertplace.destroy_all
+  end
+
+  def self.gets_info_prior_rec(array_of_prior_recs)
+    puts "Your prior recommendations are listed below. We hope you loved them!"
+    array_of_prior_recs.each do |rec|
+      dest = Dessertplace.where(id: rec.dessertplace_id)
+      puts "Name: #{dest[0].name}"
+      puts "Address: #{dest[0].display_address}"
+      puts ""
+    end
   end
 
 

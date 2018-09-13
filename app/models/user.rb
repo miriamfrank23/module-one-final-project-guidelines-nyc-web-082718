@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   def self.make_user(user)
     if user == nil
       username = gets_name
-      binding.pry
+      # binding.pry
       zip_code = gets_zip
       user = User.create_user(username, zip_code)
       return user
@@ -16,7 +16,9 @@ class User < ActiveRecord::Base
       puts "[2] - Get new recommendations"
       choice = gets.chomp
       if choice == '1'
-        #have it display all old recommendations
+        # binding.pry
+        old = Recommendation.return_old_recommendations(user.id)
+        # binding.pry
       elsif choice == '2'
         return user
       else
