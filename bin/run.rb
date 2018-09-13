@@ -20,7 +20,6 @@ require_relative '../lib/CLI_methods.rb'
 
 
 
-
 def return_recommendation(dessert_type, pricerange)
   d = Dessertplace.where(category: dessert_type, price: pricerange)
   binding.pry
