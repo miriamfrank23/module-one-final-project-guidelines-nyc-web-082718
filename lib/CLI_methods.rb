@@ -1,13 +1,13 @@
 require 'pry'
 
 def greet
-  puts "Hi there! If you're looking for somewhere to get dessert in NYC tonight, you came to the right place."
+  puts "Hi there! If you're looking for somewhere to get dessert in NYC tonight, you came to the right place. We will find you a highly rated and conveniently located dessert place to go tonight right now!"
 end
 
 
 def returning_user?
   puts "Are you a returning user?"
-  puts "y or n"
+  puts "Y or N"
   y_n = gets.chomp.downcase
   if y_n == 'y'
     puts "Please enter you username"
@@ -55,7 +55,7 @@ end
 
 def asks_for_dessert_type
   puts "We want to pick the perfect place for you; please answer a few questions below."
-  puts "Please pick a dessert from the list below. Number 1-8:"
+  puts "Please pick a dessert from the list below. Number 1-9:"
   puts "[1] - Ice Cream"
   puts "[2] - Cupcakes"
   puts "[3] - Donuts"
@@ -63,7 +63,9 @@ def asks_for_dessert_type
   puts "[5] - Gelato"
   puts "[6] - Macarons"
   puts "[7] - Bakery Desserts"
-  puts "[8] - Suprise Me!"
+  puts "[8] - Candy"
+  puts "[9] - Surprise Me!"
+  puts ""
   dessert_type = gets.chomp
   if dessert_type == '1'
     return 'icecream'
@@ -80,6 +82,8 @@ def asks_for_dessert_type
   elsif dessert_type == '7'
     return 'bakeries'
   elsif dessert_type == '8'
+    return 'candy'
+  elsif dessert_type == '9'
     return 'desserts'
   else
     puts "Please enter one of the options below:"
@@ -91,4 +95,24 @@ end
 def asks_for_dessert_price
   puts "There are desserts of all prices in the city. How much are you looking to spend on your dessert? Please indicate your price ranges with dollar signs: one dollar sign ($) is should indicate very inexpensive, and four dollar signs ($$$$) should indicate very expensive."
   dessert_price_range = gets.chomp
+end
+
+def goodbye(user)
+  puts "Thanks for visiting, #{user.name}! We hope you love your dessert tonight! Please come back for more recommendations soon, remember, your user ID is #{user.id}. Goodbye!"
+end
+
+def repeat_recommendation?(user)
+  puts "Would you like another recommendation right now?"
+  puts "Y or N"
+  y_n = gets.chomp.downcase
+  binding.pry
+    if y_n == 'y'
+      binding.pry
+      find_recommendation_methods(user)
+    elsif y_n == 'n'
+      binding.pry
+      goodbye(user)
+    else puts "Please enter Y or N"
+      repeat_recommendation?(user)
+    end
 end

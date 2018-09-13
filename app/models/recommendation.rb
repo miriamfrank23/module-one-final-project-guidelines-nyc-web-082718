@@ -22,6 +22,7 @@ class Recommendation < ActiveRecord::Base
       Recommendation.create(user_id: user.id, dessertplace_id: d.id)
       # Recommendation.add_recommendation(user.id, d.id)
       # Add to rec tabe
+      repeat_recommendation?(user)
     end
   end
 

@@ -18,9 +18,14 @@ require_relative '../lib/CLI_methods.rb'
 greet
 user = returning_user?
 user = User.make_user(user)
-dessert_type = asks_for_dessert_type
-pricerange = asks_for_dessert_price
-recommendation = Recommendation.return_recommendation(user, dessert_type, pricerange)
+def find_recommendation_methods(user)
+  dessert_type = asks_for_dessert_type
+  pricerange = asks_for_dessert_price
+  recommendation = Recommendation.return_recommendation(user, dessert_type, pricerange)
+end
+find_recommendation_methods(user)
+
+
 
 
 
