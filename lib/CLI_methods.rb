@@ -4,6 +4,30 @@ def greet
   puts "Hi there! If you're looking for somewhere to get dessert in NYC tonight, you came to the right place."
 end
 
+
+def returning_user?
+  puts "Are you a returning user?"
+  puts "y or n"
+  y_n = gets.chomp.downcase
+  if y_n == 'y'
+    puts "Please enter you username"
+    username = gets.chomp
+    puts "Please enter your user ID"
+    userId = gets.chomp.to_i
+    if User.exists?(name: username)
+      user = User.find_by name: username, id: userId
+      return user
+      # u = User.find_by name: 'Tom', id: 29
+    else
+      puts "Are you sure you exist?"
+      returning_user?
+    end
+  else
+  return nil
+  end
+end
+
+
 def gets_name
   puts "First, please give us a username to remember you by!"
   username = gets.chomp
@@ -13,22 +37,21 @@ def gets_name
   #   username
   # else
     username
-  # end
 end
+
 
 def gets_zip
   puts "Please give us your zip code so we can recommend a great place close by!"
   zip_code = gets.chomp
-  zip_code
+  if zip_code.length != 5
+    puts "Please enter a 5 digit zip code"
+    gets_zip
+  else
+    return zip_code
+  end
 end
 
 
-
-# greet
-# gets_name
-# gets_zip
-# create_user
-# binding.pry
 
 def asks_for_dessert_type
   puts "We want to pick the perfect place for you; please answer a few questions below."
@@ -63,9 +86,6 @@ def asks_for_dessert_type
     asks_for_dessert_type
   end
 end
-
-
-
 
 
 def asks_for_dessert_price
