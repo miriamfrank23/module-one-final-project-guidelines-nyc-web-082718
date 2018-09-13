@@ -18,14 +18,27 @@ require_relative '../lib/CLI_methods.rb'
 
 
 
+greet
+user = User.create_user
+dessert_type = asks_for_dessert_type
+pricerange = asks_for_dessert_price
 
-
-
-def return_recommendation(dessert_type, pricerange)
-  d = Dessertplace.where(category: dessert_type, price: pricerange)
+def return_recommendation(user,dessert_type, pricerange)
+  d = []
+  d = Dessertplace.where(zip_code: user.zip_code, category: dessert_type, price: pricerange)
   binding.pry
+  if d.length == 0
+    binding.pry
+    user.change_zip_code
+    return_recommendation(user,dessert_type, pricerange)
+  else
+    d = d.sample
+    binding.pry
+  end
 end
 
+
+return_recommendation(user, dessert_type, pricerange)
 
 #create Dessert database
 def create_database
@@ -45,10 +58,7 @@ def empty_recommdation_db
   Recommendation.destroy_database()
 end
 
-user = create_user
-dessert_type = asks_for_dessert_type
-pricerange = asks_for_dessert_price
-return_recommendation(dessert_type, pricerange)
+
 
 binding.pry
 

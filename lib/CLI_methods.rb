@@ -22,9 +22,7 @@ def gets_zip
   zip_code
 end
 
-def create_user
-  User.create(name: gets_name, zip_code: gets_zip)
-end
+
 
 # greet
 # gets_name
@@ -34,10 +32,41 @@ end
 
 def asks_for_dessert_type
   puts "We want to pick the perfect place for you; please answer a few questions below."
-  puts "What type of dessert sounds good to you? For example, do you want ice cream, frozen yogurt, cupcakes, donuts, candy, or something else?"
-  "Please pick a dessert from the list below."
+  puts "Please pick a dessert from the list below. Number 1-8:"
+  puts "[1] - Ice Cream"
+  puts "[2] - Cupcakes"
+  puts "[3] - Donuts"
+  puts "[4] - Chocolate"
+  puts "[5] - Gelato"
+  puts "[6] - Macarons"
+  puts "[7] - Bakery Desserts"
+  puts "[8] - Suprise Me!"
   dessert_type = gets.chomp
+  if dessert_type == '1'
+    return 'icecream'
+  elsif dessert_type == '2'
+    return 'cupcakes'
+  elsif dessert_type == '3'
+    return 'donuts'
+  elsif dessert_type == '4'
+    return 'chocolate'
+  elsif dessert_type == '5'
+    return 'gelato'
+  elsif dessert_type == '6'
+    return 'macarons'
+  elsif dessert_type == '7'
+    return 'bakeries'
+  elsif dessert_type == '8'
+    return 'desserts'
+  else
+    puts "Please enter one of the options below:"
+    asks_for_dessert_type
+  end
 end
+
+
+
+
 
 def asks_for_dessert_price
   puts "There are desserts of all prices in the city. How much are you looking to spend on your dessert? Please indicate your price ranges with dollar signs: one dollar sign ($) is should indicate very inexpensive, and four dollar signs ($$$$) should indicate very expensive."
