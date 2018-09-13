@@ -44,6 +44,7 @@ class Recommendation < ActiveRecord::Base
 
   def self.return_old_recommendations(user_id)
     array = Recommendation.where(user_id: user_id)
+    array = array.select(:dessertplace_id).uniq
     Dessertplace.gets_info_prior_rec(array)
   end
 end

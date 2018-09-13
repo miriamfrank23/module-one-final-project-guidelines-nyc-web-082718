@@ -9,6 +9,7 @@ def greet
   puts
   puts "Hi there! If you're looking for somewhere to get dessert in NYC tonight, you came to the right place. We will find you a highly rated and conveniently located dessert place to go tonight right now!".colorize(:light_magenta)
   puts ""
+  catpix egglo.png
 end
 
 
@@ -118,12 +119,9 @@ def repeat_recommendation?(user)
   puts "Would you like another recommendation right now?".colorize(:light_magenta)
   puts "Y or N".colorize(:light_magenta)
   y_n = gets.chomp.downcase
-  # binding.pry
     if y_n == 'y'
-      # binding.pry
       find_recommendation_methods(user)
     elsif y_n == 'n'
-      # binding.pry
       goodbye(user)
     else puts "Please enter Y or N".colorize(:light_cyan)
       repeat_recommendation?(user)
