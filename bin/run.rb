@@ -5,7 +5,6 @@ require_relative  '../app/models/recommendation.rb'
 require_relative '../app/models/user.rb'
 require_relative '../lib/api_communicator.rb'
 require_relative '../lib/CLI_methods.rb'
-require_relative '../images/egglo.png'
 
 #THis is how to add to the database
 # u = User.create(name: 'name', zip_code: 12345)
@@ -15,7 +14,7 @@ require_relative '../images/egglo.png'
 #how to search the database
 # bibble = Dessertplace.find_by name: 'Bibble & Sip'
 
-
+# binding.pry
 greet
 user = returning_user?
 user = User.make_user(user)

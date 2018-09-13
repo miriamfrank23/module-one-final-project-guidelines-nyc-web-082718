@@ -6,8 +6,8 @@ class Dessertplace < ActiveRecord::Base
 
   def self.add_dessertplaces()
     offset = 0
-    while offset < 500
-      search_result = search("Patisserie", 'New York City', offset)
+    while offset < 10000
+      search_result = search("desserts", 'New York City', offset)
       # binding.pry
       i = 0
       while i < 50
@@ -25,7 +25,7 @@ class Dessertplace < ActiveRecord::Base
         puts "#{i}"
         if Dessertplace.exists?(name: name)
           i += 1
-        elsif rating >= 4.5 && price != nil
+        elsif rating >= 4.0 && price != nil
           Dessertplace.create(name: name, zip_code: zip_code, rating: rating, price: price,display_address: display_address, category: category, url: "URL",image_url: image_url)
           i += 1
         else

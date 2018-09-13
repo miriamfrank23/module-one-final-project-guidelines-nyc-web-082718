@@ -12,15 +12,18 @@ class User < ActiveRecord::Base
     else
       puts
       puts "What whould you like to do?".colorize(:light_magenta)
-      puts "Please pick an option from the list below by entering a number 1 or 2:".colorize(:light_magenta)
+      puts "Please pick an option from the list below by entering a number 1, 2 or 3:".colorize(:light_magenta)
       puts "[1] - See old recommendations".colorize(:light_magenta)
       puts "[2] - Get new recommendations".colorize(:light_magenta)
+      puts "[3] - Exit".colorize(:light_magenta)
       choice = gets.chomp
       if choice == '1'
         old = Recommendation.return_old_recommendations(user.id)
         User.make_user(user)
       elsif choice == '2'
         return user
+      elsif choice == '3'
+        goodbye(user)
       else
         puts "Please make a selection".colorize(:light_cyan)
         User.make_user(user)

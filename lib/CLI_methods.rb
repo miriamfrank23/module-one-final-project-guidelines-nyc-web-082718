@@ -105,13 +105,14 @@ end
 
 def asks_for_dessert_price
   puts
-  puts "There are desserts of all prices in the city. How much are you looking to spend on your dessert? Please indicate your price ranges with dollar signs: one dollar sign ($) should indicate very inexpensive, and four dollar signs ($$$) should indicate very expensive.".colorize(:light_magenta)
+  puts "There are desserts of all prices in the city. How much are you looking to spend on your dessert? Please indicate your price ranges with dollar signs: one dollar sign ($) should indicate very inexpensive, and three dollar signs ($$$) should indicate very expensive.".colorize(:light_magenta)
   dessert_price_range = gets.chomp
 end
 
 def goodbye(user)
   puts
   puts "Thanks for visiting, #{user.name}! We hope you love your dessert tonight! Please come back for more recommendations soon, remember, your user ID is #{user.id}. Goodbye!".colorize(:light_magenta)
+  exit(true)
 end
 
 def repeat_recommendation?(user)
@@ -121,7 +122,7 @@ def repeat_recommendation?(user)
     if y_n == 'y'
       find_recommendation_methods(user)
     elsif y_n == 'n'
-      goodbye(user)
+      User.make_user(user)
     else puts "Please enter Y or N".colorize(:light_cyan)
       repeat_recommendation?(user)
     end
