@@ -15,14 +15,17 @@ require_relative '../lib/CLI_methods.rb'
 # bibble = Dessertplace.find_by name: 'Bibble & Sip'
 
 
-greet
-user = returning_user?
-user = User.make_user(user)
 def find_recommendation_methods(user)
   dessert_type = asks_for_dessert_type
   pricerange = asks_for_dessert_price
   recommendation = Recommendation.return_recommendation(user, dessert_type, pricerange)
 end
+
+
+
+greet
+user = returning_user?
+user = User.make_user(user)
 find_recommendation_methods(user)
 
 
@@ -50,6 +53,3 @@ end
 def empty_recommdation_db
   Recommendation.destroy_database()
 end
-
-binding.pry
-puts "HELLO WORLD"
