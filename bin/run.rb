@@ -14,7 +14,7 @@ require_relative '../lib/CLI_methods.rb'
 #how to search the database
 # bibble = Dessertplace.find_by name: 'Bibble & Sip'
 
-# binding.pry
+
 greet
 user = returning_user?
 user = User.make_user(user)
@@ -51,5 +51,5 @@ def empty_recommdation_db
   Recommendation.destroy_database()
 end
 
-# binding.pry
-# puts "HELLO WORLD"
+binding.pry
+puts "HELLO WORLD"

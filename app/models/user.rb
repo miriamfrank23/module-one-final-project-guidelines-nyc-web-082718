@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
         old = Recommendation.return_old_recommendations(user.id)
         User.make_user(user)
       elsif choice == '2'
-        return user
+        find_recommendation_methods(user)
       elsif choice == '3'
         goodbye(user)
       else
