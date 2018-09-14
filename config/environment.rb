@@ -6,3 +6,5 @@ require_all 'lib'
 
 #turns off debug logging in terminal, only necessary when running CLI.
 ActiveRecord::Base.logger.level = :info
+
+ActiveSupport::Deprecation.silenced = true
