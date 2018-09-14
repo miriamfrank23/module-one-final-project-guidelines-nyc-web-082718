@@ -19,6 +19,7 @@ Please read CONTRIBUTING.md for details on our code of conduct, and the proces
 
 ## Authors
  Thomas Lever
+ 
  Miriam Frank
 
 ## License
