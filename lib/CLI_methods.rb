@@ -119,10 +119,12 @@ end
 def goodbye(user)
   puts
   puts "Thanks for visiting, #{user.name}! We hope you love your dessert tonight! Please come back for more recommendations soon, remember, your user ID is #{user.id}. Goodbye!".colorize(:light_magenta)
+  puts 
   exit(true)
 end
 
 def repeat_recommendation?(user)
+  puts
   puts "Would you like another recommendation right now?".colorize(:light_magenta)
   puts "Y or N".colorize(:light_magenta)
   y_n = gets.chomp.downcase

@@ -51,5 +51,5 @@ def empty_recommdation_db
   Recommendation.destroy_database()
 end
 
-binding.pry
-puts "HELLO WORLD"
+# binding.pry
+# puts "HELLO WORLD"

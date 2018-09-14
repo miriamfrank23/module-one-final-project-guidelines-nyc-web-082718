@@ -32,9 +32,10 @@ class Recommendation < ActiveRecord::Base
         elsif y_n == 'n'
           d = Dessertplace.where(category: dessert_type, price: pricerange)
           if d.length == 0
-            puts "There are no places that fit your criteria in the City"
-            puts "Would you like to change your criteria?"
-            puts "Please indicate Y or N"
+            puts
+            puts "Unfortunately, there are no places that fit your criteria in NYC.".colorize(:light_magenta)
+            puts "Would you like to change your criteria and try again?".colorize(:light_magenta)
+            puts "Please indicate Y or N".colorize(:light_cyan)
             yes_no = gets.chomp.downcase
             if yes_no == 'y'
               find_recommendation_methods(user)
