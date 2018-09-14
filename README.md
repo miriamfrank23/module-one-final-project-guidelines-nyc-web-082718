@@ -18,8 +18,8 @@ Before installing this app, please install Ruby v2.3.3 or later.
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
-	  * Thomas Lever
-	  * Miriam Frank
+ Thomas Lever
+ Miriam Frank
 
 ## License
 See the LICENSE.md file for details
