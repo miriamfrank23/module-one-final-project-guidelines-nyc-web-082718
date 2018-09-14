@@ -107,6 +107,13 @@ def asks_for_dessert_price
   puts
   puts "There are desserts of all prices in the city. How much are you looking to spend on your dessert? Please indicate your price ranges with dollar signs: one dollar sign ($) should indicate very inexpensive, and three dollar signs ($$$) should indicate very expensive.".colorize(:light_magenta)
   dessert_price_range = gets.chomp
+  if dessert_price_range != "$" && dessert_price_range != "$$" && dessert_price_range !=  "$$$"
+    puts
+    puts "Please enter $, $$ or $$$".colorize(:light_cyan)
+      asks_for_dessert_price
+    else
+      return dessert_price_range
+    end
 end
 
 def goodbye(user)
